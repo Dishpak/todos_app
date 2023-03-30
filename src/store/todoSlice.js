@@ -1,12 +1,19 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+const userId = localStorage.getItem('userId');
+
 const todoSlice = createSlice({
   name: 'todos',
   initialState: [],
   reducers: {
+    loadTodo:(state, action) => {
+      fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
+        .then((response) => response.json())
+        .then(data => console.log(data))
+    },
+
     addTodo:(state, action) =>  {
       const userId = Number(localStorage.getItem('userId'));
-      const newTodo = () => {
         fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`, {
             method: 'POST',
             body: JSON.stringify({
@@ -21,13 +28,11 @@ const todoSlice = createSlice({
         })
           .then((response) => response.json())
           .then((data) => state.push((prev) => [...prev, data]));
-
-      }
-      // state.push(newTodo)
     },
+
     toggleTodo:(state, action) => {},
   },
 })
 
-export const {addTodo, toggleTodo} = todoSlice.actions;
+export const {addTodo, loadTodo} = todoSlice.actions;
 export default todoSlice.reducer;

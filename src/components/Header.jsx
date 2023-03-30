@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import logo from '../assets/logo/logo-black-crop.png';
 
 const Header = () => {
@@ -14,7 +14,8 @@ const Header = () => {
   return (
     <header className={'flex-container row'}>
       <nav>
-        <h1>HEADER COMPONENT</h1>
+        <NavLink to={'/todos'} >Todos</NavLink>
+        <NavLink to={'/todos/completed'} >Completed Todos</NavLink>
       </nav>
       <div className={'logo'}>
         <a href="/"><img src={logo} alt="logo" style={{height: 50}}/></a>

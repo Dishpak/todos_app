@@ -5,10 +5,6 @@ import Footer from "./components/Footer";
 import AppRouter from "./AppRouter/AppRouter";
 
 function App() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
-
 
   return (
     <div className="flex-container app">

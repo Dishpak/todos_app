@@ -42,6 +42,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+a {
+  cursor: pointer;
+}
 
 html,
 body,
@@ -49,6 +55,8 @@ body,
 .app {
   width: 100%;
   min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 /*BASE COLORS*/
@@ -71,21 +79,18 @@ li a {
 }
 
 header, footer {
-  padding: 20px 0;
+  padding: 10px 0;
   background-color: var(--color-accent);
   color: var(--color-text);
   text-align: center;
   width: 100%;
 }
 
-header {
-  /*position: fixed;*/
-  /*z-index: 30;*/
+header > * {
+  margin: 0 20px;
 }
 
 footer {
-  /*position: absolute;*/
-  /*bottom: 0;*/
   align-self: flex-end;
 }
 
@@ -103,10 +108,13 @@ nav li {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  background-color: var(--color-background);
 }
 .flex-container .row {
   flex-direction: row;
+}
+
+.flex-child {
+  width:90%;
 }
 
 .todo-item {
@@ -114,4 +122,31 @@ nav li {
   margin: 10px auto;
   border: 1px solid var(--color-accent);
   color: var(--color-text);
+  cursor: pointer;
+}
+.todo-item:hover {
+  background-color: var(--color-accent);
+}
+.todo-item.completed {
+  text-decoration: line-through;
+}
+
+.add-form {
+  text-align: center;
+}
+.add-form input {
+  display: block;
+  margin: 10px auto;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+
+}
+
+/*RESPONSIVE*/
+
+@media only screen and (min-width: 577px) {
+  .flex-child {
+    width: 40%;
+  }
 }

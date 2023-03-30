@@ -1,6 +1,5 @@
 import './App.css';
 import {useSelector, useDispatch} from "react-redux";
-import {increment, decrement, incrementByAmount} from "./store/counterSlice";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppRouter from "./AppRouter/AppRouter";

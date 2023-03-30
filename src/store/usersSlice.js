@@ -13,10 +13,9 @@ export const usersSlice = createSlice({
           },
           {
               id: 2,
-              name: 'kapshid'
+              name: 'vika'
 
           }
       ]
 })
-
 export default usersSlice.reducer;

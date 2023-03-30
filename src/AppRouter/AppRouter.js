@@ -7,7 +7,8 @@ import LoginPage from "../components/LoginPage";
 const AppRouter = () => {
   return (
     <Routes>
-        <Route path='/' element={<LoginPage />} />
+        {!localStorage.getItem('userName') && <Route path='/' element={<LoginPage/>}/>}
+        <Route path='/' element={<Todos/>}/>
         <Route path='/todos' element={<Todos />}/>
         <Route path='*' element={<ErrorPage />} />
     </Routes>

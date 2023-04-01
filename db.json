@@ -1,0 +1,45 @@
+{
+  "posts": [],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "todos": [
+    {
+      "userId": "1",
+      "id": "19096012-81c1-431b-bdf1-7b975ce75874",
+      "title": "Hello",
+      "completed": false
+    },
+    {
+      "userId": "1",
+      "id": "be441a71-772a-4959-bdbd-06d5a98f59dc",
+      "title": "hello",
+      "completed": false
+    },
+    {
+      "userId": "1",
+      "id": "db863b79-b980-460b-85dc-53fb3135ccc1",
+      "title": "boom",
+      "completed": false
+    }
+  ],
+  "users": [
+    {
+      "userId": 1,
+      "username": "dishpak",
+      "password": "dishpak"
+    },
+    {
+      "userId": 2,
+      "username": "aksana",
+      "password": "aksana"
+    }
+  ]
+}

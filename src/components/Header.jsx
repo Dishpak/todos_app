@@ -4,7 +4,7 @@ import logo from '../assets/logo/logo-black-crop.png';
 
 const Header = () => {
   const navigate = useNavigate();
-  const userName = localStorage.getItem('userName');
+  const userName = JSON.parse(localStorage.getItem('userName'));
 
   const logOut = () => {
     localStorage.clear();

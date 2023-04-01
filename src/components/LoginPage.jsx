@@ -11,7 +11,7 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        localStorage.setItem('userName', userName.toLowerCase());
+        localStorage.setItem('userName', JSON.stringify(userName).toLowerCase());
         setUsername('')
 
         const checkUser = () => {

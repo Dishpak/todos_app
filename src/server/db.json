@@ -32,5 +32,24 @@
       "password": "aksana"
     }
   ],
-  "todos": []
+  "todos": [
+    {
+      "userId": "1",
+      "id": "1602d5c7-87f1-41e5-91ad-8be363c6fdb6",
+      "title": "hhelo",
+      "completed": false
+    },
+    {
+      "userId": "1",
+      "id": "0b25a833-906f-4519-9d9d-3503afc10298",
+      "title": "as;hda",
+      "completed": false
+    },
+    {
+      "userId": "1",
+      "id": "ce231cf3-7e19-4474-aefa-419c37faeb6c",
+      "title": ",m zc.c",
+      "completed": false
+    }
+  ]
 }

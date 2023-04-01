@@ -25,32 +25,7 @@ export const AppProvider = ({children}) => {
   }, [userId]);
 
 
-  const handleAddTodo = (e) => {
-    e.preventDefault()
 
-
-    if(title){
-      fetch(`${baseApiUrl}/todos?userId=${userId}`, {
-        method: 'POST',
-        body: JSON.stringify({
-          userId: userId,
-          id: uid,
-          title: title,
-          completed: false,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => dispatch({type: ACTION_TYPES.ADD_TODO, payload:data}));
-    } else {
-      alert('ghjkl;')
-    }
-    uuidv4();
-    setTitle('')
-
-  }
 
     const toggleComplete = (id) => {
       const searchedTodo = state.todos.find(element => element.id === id);
@@ -77,20 +52,20 @@ export const AppProvider = ({children}) => {
       },
     })
       .then(dispatch({type: ACTION_TYPES.DELETE_TODO, payload:id}))
-    console.log(id);
   }
 
   return(
     <AppContext.Provider value={
       {
         baseApiUrl,
+        userId,
         handleDelete,
         toggleComplete,
-        userId,
         state,
-        handleAddTodo,
         title,
-        setTitle
+        setTitle,
+        uid,
+        dispatch,
       }
     }>
       {children}

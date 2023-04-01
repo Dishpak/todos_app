@@ -27,6 +27,11 @@ const todoReducer = (state, action) => {
         )
       };
     }
+    // case ACTION_TYPES.DELETE_TODO: {
+    //   return {
+    //
+    //   }
+    // }
     default: return  state
   }
 }

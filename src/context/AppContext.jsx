@@ -8,7 +8,7 @@ import {v4 as uuidv4} from "uuid";
 const AppContext = createContext(initialState);
 
 export const AppProvider = ({children}) => {
-  const baseApiUrl = 'http://localhost:3000';
+  const baseApiUrl = 'http://localhost:3001';
   const userId = localStorage.getItem('userId');
   const [state, dispatch] = useReducer(todoReducer, initialState);
   const [title, setTitle] = useState('')
@@ -16,16 +16,14 @@ export const AppProvider = ({children}) => {
 
   const loadData = () => {
     fetch(`${baseApiUrl}/todos/?userId=${userId}`)
+    // fetch(`https://jsonplaceholder.typicode.com/todos/?userId=${userId}`)
       .then((response) => response.json())
       .then((data) => dispatch({type: ACTION_TYPES.LOAD_TODOS, payload:data}))
   };
 
   useEffect(() => {
     return loadData();
-  }, []);
-
-  useEffect(() => {
-  }, []);
+  }, [userId]);
 
 
   const handleAddTodo = (e) => {
@@ -37,7 +35,6 @@ export const AppProvider = ({children}) => {
         method: 'POST',
         body: JSON.stringify({
           userId: userId,
-          // id: Math.floor(Math.random() * 1000 + 201),
           id: uid,
           title: title,
           completed: false,
@@ -73,30 +70,23 @@ export const AppProvider = ({children}) => {
         .then((data) => dispatch({type: ACTION_TYPES.TOGGLE_COMPLETE_TODO, payload:data.id}))
     }
 
-  // const handleDelete = () => {
-  //   // const clickedTodo = todos.find(element => element.id === id).id;
-  //   // console.log(clickedTodo);
-  //   fetch(`${baseApiUrl}/todos/387`, {
-  //     method: 'DELETE',
-  //   })
-    //   .then((response) => response.json())
-    //   .then((data) => setTodos((prev) => {
-    //     return [
-    //       ...prev.slice(0, patchingTodo),
-    //       data,
-    //       ...prev.slice(patchingTodo + 1)
-    //     ]
-    //   }))
-  // }
+  const handleDelete = (id) => {
+    // const searchedTodo = state.todos.find(element => element.id === id);
+    // console.log(searchedTodo);
+    fetch(`${baseApiUrl}/posts/1`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+  }
 
+  // console.log(`${baseApiUrl}/todos/b03fd010-218a-4d3d-9e1d-cf10ea74b8a8`)
 
   return(
     <AppContext.Provider value={
       {
         baseApiUrl,
-        // todos,
-        // setTodos,
-        // handleDelete,
+        handleDelete,
         toggleComplete,
         userId,
         state,

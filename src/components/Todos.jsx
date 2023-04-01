@@ -3,9 +3,9 @@ import AddTodo from "./AddTodo";
 import AppContext from "../context/AppContext";
 
 const Todos = () => {
-  const {setTodos, toggleComplete, state } = useContext(AppContext);
+  const {setTodos, toggleComplete, state, handleDelete } = useContext(AppContext);
 
-  // console.log(state.todos);
+  console.log(state.todos);
 
   return (
     <div className={'flex-child'}>
@@ -17,7 +17,7 @@ const Todos = () => {
                 return <div className={'todo-item'} key={todo.id}>
                   <span className={'title'}>{todo.title}</span>
                   <button className={'btn-complete'} onClick={() => toggleComplete(todo.id)}>Complete</button>
-                  {/*<button className={'btn-delete'} onClick={() => handleDelete(todo.id)}>Delete</button>*/}
+                  <button className={'btn-delete'} onClick={() => handleDelete(todo.id)}>Delete</button>
                 </div>
             })}
         </div>

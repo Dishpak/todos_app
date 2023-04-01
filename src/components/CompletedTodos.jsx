@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import AppContext from "../context/AppContext";
 
 const CompletedTodos = () => {
-  const {toggleComplete, handleDelete, state} = useContext(AppContext)
+  const {toggleComplete, state} = useContext(AppContext)
 
   return (
     <div>

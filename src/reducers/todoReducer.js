@@ -27,11 +27,11 @@ const todoReducer = (state, action) => {
         )
       };
     }
-    // case ACTION_TYPES.DELETE_TODO: {
-    //   return {
-    //
-    //   }
-    // }
+    case ACTION_TYPES.DELETE_TODO: {
+      return {
+        todos: state.todos.filter(todo => todo.id != action.payload)
+      }
+    }
     default: return  state
   }
 }

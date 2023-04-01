@@ -16,7 +16,6 @@ export const AppProvider = ({children}) => {
 
   const loadData = () => {
     fetch(`${baseApiUrl}/todos/?userId=${userId}`)
-    // fetch(`https://jsonplaceholder.typicode.com/todos/?userId=${userId}`)
       .then((response) => response.json())
       .then((data) => dispatch({type: ACTION_TYPES.LOAD_TODOS, payload:data}))
   };
@@ -71,16 +70,15 @@ export const AppProvider = ({children}) => {
     }
 
   const handleDelete = (id) => {
-    // const searchedTodo = state.todos.find(element => element.id === id);
-    // console.log(searchedTodo);
-    fetch(`${baseApiUrl}/posts/1`, {
+    fetch(`${baseApiUrl}/todos/${id}`, {
       method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then(dispatch({type: ACTION_TYPES.DELETE_TODO, payload:id}))
+    console.log(id);
   }
-
-  // console.log(`${baseApiUrl}/todos/b03fd010-218a-4d3d-9e1d-cf10ea74b8a8`)
 
   return(
     <AppContext.Provider value={

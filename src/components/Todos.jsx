@@ -5,7 +5,7 @@ import AppContext from "../context/AppContext";
 const Todos = () => {
   const {setTodos, toggleComplete, state, handleDelete } = useContext(AppContext);
 
-  console.log(state.todos);
+  // console.log(state.todos);
 
   return (
     <div className={'flex-child'}>

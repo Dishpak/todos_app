@@ -6,7 +6,7 @@ export const initialState = {
 }
 
 
-const todoReducer = (state, action) => {
+const todoReducer = (todoState, action) => {
   switch (action.type) {
     case ACTION_TYPES.LOAD_TODOS: {
       return {
@@ -15,12 +15,12 @@ const todoReducer = (state, action) => {
     }
     case ACTION_TYPES.ADD_TODO: {
       return {
-        todos: [...state.todos, action.payload],
+        todos: [...todoState.todos, action.payload],
       }
     }
     case ACTION_TYPES.TOGGLE_COMPLETE_TODO: {
       return {
-        todos: state.todos.map(todo =>
+        todos: todoState.todos.map(todo =>
           todo.id === action.payload
             ? {...todo, completed: !todo.completed}
             : todo
@@ -29,10 +29,10 @@ const todoReducer = (state, action) => {
     }
     case ACTION_TYPES.DELETE_TODO: {
       return {
-        todos: state.todos.filter(todo => todo.id != action.payload)
+        todos: todoState.todos.filter(todo => todo.id != action.payload)
       }
     }
-    default: return  state
+    default: return  todoState
   }
 }
 

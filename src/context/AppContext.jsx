@@ -10,7 +10,7 @@ const AppContext = createContext(initialState);
 export const AppProvider = ({children}) => {
   const baseApiUrl = 'http://localhost:3001';
   const userId = localStorage.getItem('userId');
-  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const [todoState, dispatch] = useReducer(todoReducer, initialState);
   const [title, setTitle] = useState('')
   let uid = uuidv4()
 
@@ -28,7 +28,7 @@ export const AppProvider = ({children}) => {
 
 
     const toggleComplete = (id) => {
-      const searchedTodo = state.todos.find(element => element.id === id);
+      const searchedTodo = todoState.todos.find(element => element.id === id);
       const toggle = searchedTodo?.completed;
 
       fetch(`${baseApiUrl}/todos/${id}`, {
@@ -61,7 +61,7 @@ export const AppProvider = ({children}) => {
         userId,
         handleDelete,
         toggleComplete,
-        state,
+        todoState,
         title,
         setTitle,
         uid,

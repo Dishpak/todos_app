@@ -3,7 +3,7 @@ import AddTodo from "./AddTodo";
 import AppContext from "../context/AppContext";
 
 const Todos = () => {
-  const {setTodos, toggleComplete, todoState, handleDelete } = useContext(AppContext);
+  const {setTodos, toggleComplete, todos, handleDelete } = useContext(AppContext);
 
   return (
     <div className={'flex-child'}>
@@ -11,7 +11,7 @@ const Todos = () => {
         <AddTodo setTodos={setTodos}/>
         <div className={'todo-list'}>
             <h2>Your Tasks</h2>
-            {todoState.todos?.filter(todo => !todo.completed && true).map((todo) => {
+            {todos.todos?.filter(todo => !todo.completed && true).map((todo) => {
                 return <div className={'todo-item'} key={todo.id}>
                   <span className={'title'}>{todo.title}</span>
                   <button className={'btn-complete'} onClick={() => toggleComplete(todo.id)}>Complete</button>

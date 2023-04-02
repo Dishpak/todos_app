@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import logo from '../assets/logo/logo-black-crop.png';
+import AppContext from "../context/AppContext";
 
 const Header = () => {
   const navigate = useNavigate();
+  const {setIsLogged} = useContext(AppContext);
+
   const userName = JSON.parse(localStorage.getItem('userName'));
 
   const logOut = () => {
+    setIsLogged(false);
+    navigate('/');
     localStorage.clear();
-    navigate('/')
   }
+
+
 
   return (
     <header className={'flex-container row'}>

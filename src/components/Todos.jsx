@@ -11,7 +11,7 @@ const Todos = () => {
         <AddTodo setTodos={setTodos}/>
         <div className={'todo-list'}>
             <h2>Your Tasks</h2>
-            {todos.todos?.filter(todo => !todo.completed && true).map((todo) => {
+            {todos?.filter(todo => !todo.completed).map((todo) => {
                 return <div className={'todo-item'} key={todo.id}>
                   <span className={'title'}>{todo.title}</span>
                   <button className={'btn-complete'} onClick={() => toggleComplete(todo.id)}>Complete</button>

@@ -2,8 +2,7 @@ import React, {createContext, useState, useEffect, useReducer} from "react";
 import rootReducer, {initialState} from "../reducers/reducers";
 import {ACTION_TYPES} from "../helpers/globalVariables";
 import {v4 as uuidv4} from "uuid";
-
-
+import axios from "axios";
 
 const AppContext = createContext(initialState);
 
@@ -17,16 +16,16 @@ export const AppProvider = ({children}) => {
 
 
   const loadTodos = () => {
-    fetch(`${baseApiUrl}/todos/?userId=${userId}`)
-      .then((response) => response.json())
-      .then((data) => dispatch({type: ACTION_TYPES.LOAD_TODOS, payload:data}))
+    axios.get(`${baseApiUrl}/todos/?userId=${userId}`)
+      .then(response => dispatch({type: ACTION_TYPES.LOAD_TODOS, payload:response.data}))
       .catch(error => console.log(error))
   };
 
-  useEffect(() => {
-    loadTodos();
-  }, [isLogged]);
-
+  const loadUsers = () => {
+    axios.get(`${baseApiUrl}/users`)
+      .then(response => dispatch({type: ACTION_TYPES.LOAD_USERS, payload: response.data}))
+      .catch(error => console.log(error))
+  }
 
 
 
@@ -49,16 +48,15 @@ export const AppProvider = ({children}) => {
     }
 
   const handleDelete = (id) => {
-    fetch(`${baseApiUrl}/todos/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then(response => response.json())
+    axios.delete(`${baseApiUrl}/todos/${id}`)
       .then(dispatch({type: ACTION_TYPES.DELETE_TODO, payload:id}))
       .catch(error => console.log(error))
   }
+
+  useEffect(() => {
+    loadTodos();
+  }, [isLogged]);
+
 
   return(
     <AppContext.Provider value={
@@ -73,7 +71,8 @@ export const AppProvider = ({children}) => {
         setTitle,
         uid,
         dispatch,
-        setIsLogged
+        setIsLogged,
+        loadUsers
       }
     }>
       {children}

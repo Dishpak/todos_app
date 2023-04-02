@@ -1,32 +1,27 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import AppContext from "../context/AppContext";
 import {ACTION_TYPES} from "../helpers/globalVariables";
 import {v4 as uuidv4} from "uuid";
+import axios from "axios";
 
 const AddTodo = () => {
   const {title, setTitle, baseApiUrl, userId, uid, dispatch} = useContext(AppContext);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleAddTodo = (e) => {
     e.preventDefault()
 
-
     if(title){
-      fetch(`${baseApiUrl}/todos?userId=${userId}`, {
-        method: 'POST',
-        body: JSON.stringify({
+      axios.post(`${baseApiUrl}/todos?userId=${userId}`,
+        {
           userId: userId,
           id: uid,
           title: title,
           completed: false,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
       })
-        .then((response) => response.json())
-        .then((data) => dispatch({type: ACTION_TYPES.ADD_TODO, payload:data}));
+        .then(response => dispatch({type: ACTION_TYPES.ADD_TODO, payload:response.data}));
     } else {
-      alert('ghjkl;')
+      setErrorMessage('Field cannot be empty!')
     }
     uuidv4();
     setTitle('')
@@ -35,16 +30,20 @@ const AddTodo = () => {
 
   return (
       <>
-          <form action="" className='add-form'>
+          <form className='add-form' onSubmit={handleAddTodo}>
               <input
                 type="text"
                 placeholder={'Give a title'}
                 name='title'
                 value={title}
-                onChange={({target}) => setTitle(target.value)}
+                onChange={({target}) => {
+                  setTitle(target.value)
+                  setErrorMessage('')
+                }}
                 minLength={4}
               />
-              <button onClick={handleAddTodo}>Add</button>
+            {errorMessage && <p>{errorMessage}</p>}
+              <button type="submit">Add</button>
           </form>
       </>
     );

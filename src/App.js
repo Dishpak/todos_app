@@ -1,5 +1,4 @@
 import './App.css';
-import {useSelector, useDispatch} from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppRouter from "./AppRouter/AppRouter";

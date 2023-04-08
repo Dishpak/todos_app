@@ -17,7 +17,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(password != confirmPassword) {
+    if(password !== confirmPassword) {
       setErrorMessage('Your passwords don\'t match')
     } else if(users.find(user => user.name === userName)) {
       setErrorMessage('Username is taken. Choose another one')
@@ -25,11 +25,11 @@ const Register = () => {
       axios.post(`${baseApiUrl}/users`, {
         id: uid,
         name: userName,
-        password: password
+        password: password,
       })
         .then(response => dispatch({type: ACTION_TYPES.ADD_USER, payload: response.data}))
       localStorage.setItem('userName', JSON.stringify(userName).toLowerCase());
-      localStorage.setItem('userId', uid)
+      localStorage.setItem('userId', uid);
       navigate('/todos')
     }
   }

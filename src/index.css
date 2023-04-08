@@ -85,6 +85,11 @@ li a {
   color: var(--color-text)
 }
 
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 50px;
+}
+
 header, footer {
   padding: 10px 0;
   background-color: var(--color-accent);
@@ -156,12 +161,32 @@ nav li {
 
 }
 
-/*RESPONSIVE*/
+.login-container {
+  width: 300px;
+  padding: 30px 20px;
+  background: var(--color-accent);
+  color: var(--color-text);
+  border-radius: 5px;
+  box-shadow: 0px 0 20px 0px #000;
+}
+.login-container input, .login-container button {
+  display: block;
+  margin: 0 auto 20px auto;
+  border-radius: 5px;
+}
+.login-container input {
+  width: 200px;
+  height: 2rem;
+}
+.login-container button {
+  margin-top: 50px;
+}
+.login-container p {
+  text-align: center;
+}
 
-@media only screen and (min-width: 577px) {
-  .flex-child {
-    width: 40%;
-  }
+.profile-input label {
+  display: block;
 }
 
 button {
@@ -244,4 +269,12 @@ button, button span {
 
 .btn-delete:active .icon svg {
   transform: scale(0.8);
+}
+
+/*RESPONSIVE*/
+
+@media only screen and (min-width: 577px) {
+  .flex-child {
+    width: 40%;
+  }
 }

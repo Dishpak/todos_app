@@ -14,33 +14,31 @@ const AddTodo = () => {
     if(title){
       axios.post(`${baseApiUrl}/todos?userId=${userId}`,
         {
-          userId: userId,
-          id: uid,
-          title: title,
-          completed: false,
+            userId: userId,
+            id: uid,
+            title: title,
+            completed: false,
       })
         .then(response => dispatch({type: ACTION_TYPES.ADD_TODO, payload:response.data}));
     } else {
       setErrorMessage('Field cannot be empty!')
     }
-    uuidv4();
-    setTitle('')
-
+        uuidv4();
+        setTitle('')
   }
 
   return (
       <>
           <form className='add-form' onSubmit={handleAddTodo}>
               <input
-                type="text"
-                placeholder={'Give a title'}
-                name='title'
-                value={title}
-                onChange={({target}) => {
-                  setTitle(target.value)
+                  type="text"
+                  placeholder={'Give a title'}
+                  name='title'
+                  value={title}
+                  onChange={(e) => {
+                  setTitle(e.target.value)
                   setErrorMessage('')
                 }}
-                minLength={4}
               />
             {errorMessage && <p>{errorMessage}</p>}
               <button type="submit">Add</button>

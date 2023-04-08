@@ -49,6 +49,7 @@ a {
   cursor: pointer;
 }
 
+
 html,
 body,
 #root,
@@ -132,6 +133,7 @@ nav li {
 .todo-item {
   display: flex;
   align-items: center;
+  height: 60px;
   padding: 10px;
   margin: 10px auto;
   border: 1px solid var(--color-accent);
@@ -147,6 +149,20 @@ nav li {
 
 .todo-item .title {
   flex: 1;
+}
+
+.todo-item input {
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  padding-left: 10px;
+  line-height: 2rem;
+  background: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
 }
 
 .add-form {

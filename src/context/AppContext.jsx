@@ -11,6 +11,7 @@ export const AppProvider = ({children}) => {
   const userId = localStorage.getItem('userId');
   const [{todos, users}, dispatch] = useReducer(rootReducer, initialState);
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [isLogged, setIsLogged] = useState(localStorage.getItem('userName'))
   let uid = uuidv4()
 

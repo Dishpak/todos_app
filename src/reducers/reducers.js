@@ -9,12 +9,15 @@ export const initialState = {
 
 export const todosReducer = (state = initialState.todos, action) => {
   switch (action.type) {
+
     case ACTION_TYPES.LOAD_TODOS: {
       return action.payload;
     }
+
     case ACTION_TYPES.ADD_TODO: {
       return [...state, action.payload]
     }
+
     case ACTION_TYPES.TOGGLE_COMPLETE_TODO: {
       return state.map(todo =>
         todo.id === action.payload
@@ -22,11 +25,30 @@ export const todosReducer = (state = initialState.todos, action) => {
           : todo
       );
     }
+
     case ACTION_TYPES.DELETE_TODO: {
       return [...state.filter(todo => todo.id !== action.payload)]
     }
+
+    case ACTION_TYPES.TODO_EDIT_MODE: {
+      return state.map(todo =>
+        todo.id === action.payload
+          ? {...todo, editMode: true}
+          : todo
+      );
+    }
+
     case ACTION_TYPES.EDIT_TODO: {
-      return {}
+      return state.map(todo => {
+        if(todo.id === action.payload.id){
+          if(action.payload.newTitle.length > 0) {
+            return {...todo, editMode: false, title: action.payload.newTitle}
+          } else {
+            return {...todo, editMode: false}
+          }
+        } return todo
+        }
+      );
     }
     default: return  state
   }

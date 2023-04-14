@@ -70,6 +70,8 @@ export const AppProvider = ({children}) => {
         users,
         title,
         setTitle,
+        description,
+        setDescription,
         uid,
         dispatch,
         isLogged,

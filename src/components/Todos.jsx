@@ -7,27 +7,37 @@ import axios from "axios";
 const Todos = () => {
   const {setTodos, toggleComplete, todos, handleDelete, dispatch, baseApiUrl } = useContext(AppContext);
   const [newTitle, setNewTitle] = useState('');
+  const [inEditId, setInEditId] = useState(null);
 
 
   const handleClick = (id) => {
-    dispatch({type: ACTION_TYPES.TODO_EDIT_MODE, payload: id})
+    setInEditId(id);
+    dispatch({type: ACTION_TYPES.TODO_EDIT_MODE, payload: id});
   }
 
-  const handleEditTodo = (id) => {
+  const handleEditTodo = (e, id) => {
+    e.preventDefault();
+
       newTitle.length > 0 && axios.patch(`${baseApiUrl}/todos/${id}`,
         {
           title: newTitle,
         })
-        .then(response => response);
-
+        .then(response => {
+          return response
+        });
       dispatch({type: ACTION_TYPES.EDIT_TODO, payload: {id, newTitle}});
+
       setNewTitle('');
+      setInEditId(null)
+
   }
 
-  const handleKeyDown = (e, id) => {
-    if(e.key === 'Enter') {
-      handleEditTodo(id);
-    }
+
+  const handleCancelEdit = (e, id) => {
+    e.preventDefault()
+    setInEditId(null);
+    dispatch({type: ACTION_TYPES.TODO_EDIT_MODE, payload:id});
+    setNewTitle('')
   }
 
   return (
@@ -37,28 +47,25 @@ const Todos = () => {
         <div className={'todo-list'}>
             <h2>Your Tasks</h2>
             {todos?.filter(todo => !todo.completed).map((todo) => {
-                return <div className={`todo-item `} key={todo.id} onClick={() => handleClick(todo.id)}>
+                return <div className={`todo-item ${inEditId === todo.id ? 'in-edit' : ''}`} key={todo.id} onClick={() => !inEditId ? handleClick(todo.id) : null}>
                   {!todo.editMode
                     ? <>
-                      <>
                         <span className={'title'}>{todo.title}</span>
-                      </>
-                      <>
                         <button className={'btn-complete'} onClick={() => toggleComplete(todo.id)}>Complete</button>
                         <button className={'btn-delete'} onClick={() => handleDelete(todo.id)}>Delete</button>
-                      </>
                     </>
-                    : <div onBlur={() => handleEditTodo(todo.id)}>
+                    : <form onSubmit={(e) => handleEditTodo(e, todo.id)}>
                         <input
                         type="text"
                         name='title-editor'
                         value={newTitle}
                         onChange={(e) => setNewTitle(e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(e, todo.id)}
                         autoFocus={true}
                     />
+                      <button className={'btn-save'} type={'submit'}>Save</button>
+                      <button className={'btn-cancel'} onClick={(e) => handleCancelEdit(e, todo.id)}>Cancel</button>
 
-                    </div>
+                    </form>
                   }
                 </div>
             })}

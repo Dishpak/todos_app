@@ -28,7 +28,7 @@ const Header = () => {
       </div>
       {userId &&
         <div className={'user-bar'}>Hello
-          {/*<Link to={'/profile'}> {userName} </Link>*/}
+          <Link to={'/profile'}> {userName} </Link>
           |
           {/*<div className={'user-bar'}>{`Hello <Link to={'/profile'}> ${userName} </Link> |`}*/}
           <button onClick={logOut}>Log out</button>

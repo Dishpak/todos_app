@@ -33,7 +33,7 @@ export const todosReducer = (state = initialState.todos, action) => {
     case ACTION_TYPES.TODO_EDIT_MODE: {
       return state.map(todo =>
         todo.id === action.payload
-          ? {...todo, editMode: true}
+          ? {...todo, editMode: !todo.editMode}
           : todo
       );
     }

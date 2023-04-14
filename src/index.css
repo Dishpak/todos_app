@@ -140,7 +140,7 @@ nav li {
   color: var(--color-text);
 }
 
-.todo-item:hover {
+.todo-item:hover, .todo-item.in-edit {
   background-color: var(--color-accent);
 }
 .todo-item.completed {
@@ -152,6 +152,7 @@ nav li {
 }
 
 .todo-item input {
+  flex: 1 1;
   height: 100%;
   width: 100%;
   font-size: 20px;
@@ -163,6 +164,12 @@ nav li {
   border-radius: 0;
   box-shadow: none;
   outline: none;
+}
+
+.todo-item form {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .add-form {
@@ -217,7 +224,7 @@ button {
   box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
 }
 
-.btn-delete, .btn-complete  {
+.todo-item button  {
   width: 100px;
   height: 50px;
   cursor: pointer;
@@ -231,7 +238,7 @@ button {
   box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
 }
 
-.btn-complete {
+button.btn-complete, button.btn-save {
   background: var(--color-text);
   color: var(--color-accent);
 }
@@ -262,7 +269,7 @@ button, button span {
   fill: #eee;
 }
 
-.btn-delete:hover {
+.btn-delete:hover, .btn-cancel:hover {
   background: #ff3636;
 }
 .btn-complete:hover {

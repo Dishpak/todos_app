@@ -37,9 +37,9 @@ const AddTodo = () => {
                   value={title}
                   onChange={(e) => {
                   setTitle(e.target.value)
-                  setErrorMessage('')
                 }}
               />
+            <textarea name="descpition" placeholder={'Give a description (optional)'}></textarea>
             {errorMessage && <p>{errorMessage}</p>}
               <button type="submit">Add</button>
           </form>

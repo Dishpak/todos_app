@@ -5,7 +5,7 @@ import {v4 as uuidv4} from "uuid";
 import axios from "axios";
 
 const AddTodo = () => {
-  const {title, setTitle, baseApiUrl, userId, uid, dispatch} = useContext(AppContext);
+  const {title, setTitle, description, setDescription, baseApiUrl, userId, uid, dispatch} = useContext(AppContext);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleAddTodo = (e) => {
@@ -14,17 +14,19 @@ const AddTodo = () => {
     if(title){
       axios.post(`${baseApiUrl}/todos?userId=${userId}`,
         {
-            userId: userId,
-            id: uid,
-            title: title,
-            completed: false,
+          userId: userId,
+          id: uid,
+          title: title,
+          description: description,
+          completed: false,
       })
         .then(response => dispatch({type: ACTION_TYPES.ADD_TODO, payload:response.data}));
     } else {
       setErrorMessage('Field cannot be empty!')
     }
         uuidv4();
-        setTitle('')
+        setTitle('');
+        setDescription('');
   }
 
   return (
@@ -35,11 +37,13 @@ const AddTodo = () => {
                   placeholder={'Give a title'}
                   name='title'
                   value={title}
-                  onChange={(e) => {
-                  setTitle(e.target.value)
-                }}
+                  onChange={(e) => setTitle(e.target.value)}
               />
-            <textarea name="descpition" placeholder={'Give a description (optional)'}></textarea>
+            <textarea
+              name="description"
+              placeholder={'Give a description (optional)'}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)} />
             {errorMessage && <p>{errorMessage}</p>}
               <button type="submit">Add</button>
           </form>

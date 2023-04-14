@@ -31,7 +31,7 @@ export const AppProvider = ({children}) => {
 
 
     const toggleComplete = (id) => {
-      const searchedTodo = todos.find(element => element.id === id);
+      const searchedTodo = todos.find(todo => todo.id === id);
       const toggle = searchedTodo?.completed;
 
       fetch(`${baseApiUrl}/todos/${id}`, {

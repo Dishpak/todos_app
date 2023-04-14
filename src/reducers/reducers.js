@@ -42,7 +42,7 @@ export const todosReducer = (state = initialState.todos, action) => {
       return state.map(todo => {
         if(todo.id === action.payload.id){
           if(action.payload.newTitle.length > 0) {
-            return {...todo, editMode: false, title: action.payload.newTitle}
+            return {...todo, editMode: false, title: action.payload.newTitle, description: action.payload.newDescription}
           } else {
             return {...todo, editMode: false}
           }

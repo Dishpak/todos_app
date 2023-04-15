@@ -42,7 +42,13 @@ export const todosReducer = (state = initialState.todos, action) => {
       return state.map(todo => {
         if(todo.id === action.payload.id){
           if(action.payload.newTitle.length > 0) {
-            return {...todo, editMode: false, title: action.payload.newTitle, description: action.payload.newDescription}
+            return {
+              ...todo,
+              editMode: false,
+              title: action.payload.newTitle,
+              description: action.payload.newDescription,
+              date: action.payload.newDate
+            }
           } else {
             return {...todo, editMode: false}
           }
@@ -61,6 +67,19 @@ export const usersReducer = (state = initialState.users, action) => {
     }
     case ACTION_TYPES.ADD_USER: {
       return [...state, action.payload]
+    }
+    case ACTION_TYPES.EDIT_USER: {
+      return state.map(user => {
+        if(user.id === action.payload.id) {
+          return {
+            ...user,
+            name: action.payload.newName,
+            surname: action.payload.surname,
+            location: action.payload.location,
+            additional: action.payload.additional,
+          }
+        }
+      });
     }
     default: return state;
   }

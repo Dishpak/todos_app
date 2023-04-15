@@ -1,0 +1,151 @@
+@import 'reset';
+@import "config";
+@import './calendar.css';
+
+
+body, #root {
+  height: 100vh;
+  background: $color-background;
+  color: $color-text;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+  margin-top: $m-base;
+}
+
+a {
+  color: $color-text;
+  text-decoration: none;
+}
+
+.flex-container {
+  @include flexContainer(column);
+  min-height: 100vh;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 5rem;
+  padding: 1rem;
+  background: $color-accent;
+  box-shadow: 0px 2px 20px 0px $color-accent;
+
+  .header-wrapper {
+    @include flexContainer(row);
+    width: 100%;
+
+    & > * {
+      align-self: center;
+      flex: 1;
+    }
+
+    nav {
+      flex-basis: 100%;
+      text-align: center;
+      & a {
+        margin-left: $ui-step * 4;
+      }
+    }
+
+    .logo {
+      text-align: start;
+    }
+
+    .user-bar {
+      text-align: end;
+    }
+  }
+}
+
+main {
+  margin-top: 7rem;
+  height: 100%;
+  padding: 0 $m-base;
+}
+
+.add-form {
+  margin-top: $m-base;
+  width: 100%;
+
+  input, textarea {
+    display: block;
+    width: 50%;
+    padding: $p-base;
+    margin: $m-base / 2 auto 0 auto;
+    line-height: 2rem;
+    resize: none;
+    box-shadow: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 20px 0px $color-accent;
+  }
+
+  .controls {
+    @include flexContainer(row);
+    justify-content: space-between;
+    width: 50%;
+    margin: $m-base / 2 auto 0 auto;
+
+  }
+}
+
+
+.todo-item {
+  margin-top: $m-base;
+  padding: $p-base;
+  border: 1px solid $color-accent;
+
+  &:hover {
+    background: $color-accent;
+  }
+
+  & span {
+    display: block;
+    margin-top: $m-base;
+  }
+
+  .todo-controls {
+    @include flexContainer(row);
+    justify-content: space-around;
+    margin-top: $m-base;
+  }
+
+  h3 {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+}
+
+
+.btn {
+  width: $w-button;
+  height: $h-hutton;
+  //border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  transition: 200ms;
+
+  &.btn-delete {
+    background: $color-accent;
+    color: $color-text;
+
+    &:hover {
+      background: $color-highlight;
+    }
+  }
+}
+
+.btn:hover {
+  background: $color-hover;
+}
+
+footer {
+  @extend header;
+  position: relative;
+  margin-top: auto;
+}

@@ -1,0 +1,57 @@
+//COLORS
+$color-background: #617C8C;
+$color-text: #F2F2F2;
+$color-accent: #262626;
+$color-hover: #B6E1F2;
+$color-important: #A63737;
+$color-highlight: #FF3636;
+
+//MARGINS PADDINGS
+//$ui-step: 4px; //0.25rem
+$ui-step: 0.25rem; //4px
+$m-base: $ui-step * 5;
+$m-center-block: 0 auto;
+$p-base: 1rem;
+
+//SIZES
+$w-button: 5rem;
+$h-hutton: 3rem;
+
+//DEVICE MIN-WIDTH BREAKPOINTS
+$screen-mobile: 320px;
+$screen-tablet: 481px;
+$screen-laptop: 769px;
+$screen-desktop: 1025px;
+$screen-extra: 1201px;
+
+@mixin tablet {
+  @media (min-width: $screen-tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $screen-laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $screen-desktop) {
+    @content;
+  }
+}
+
+@mixin extra-screen {
+  @media (min-width: $screen-extra) {
+    @content;
+  }
+}
+
+@mixin flexContainer($direction) {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: $direction;
+}

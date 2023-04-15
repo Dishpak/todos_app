@@ -21,7 +21,7 @@ const LoginPage = () => {
         e.preventDefault()
 
         const checkUser = () => {
-            const searchedUser = users.find((user) => user.name === userName.toLowerCase() && user.password === password);
+            const searchedUser = users.find((user) => user.username === userName.toLowerCase() && user.password === password);
             if(searchedUser){
                 localStorage.setItem('userName', JSON.stringify(userName).toLowerCase());
                 localStorage.setItem('userId', searchedUser.id);
@@ -57,7 +57,7 @@ const LoginPage = () => {
                          value={password}
                          onChange={(e) => setPassword(e.target.value)}
                   />
-                  <button type={"submit"}>Log In</button>
+                  <button type={"submit"} className={'btn '}>Log In</button>
               </form>
 
               {failedLog &&

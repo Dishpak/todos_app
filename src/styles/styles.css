@@ -1,0 +1,204 @@
+@import './calendar.css';
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+a {
+  cursor: pointer;
+}
+
+body, #root {
+  height: 100vh;
+  background: #617C8C;
+  color: #F2F2F2;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+  margin-top: 1.25rem;
+}
+
+a {
+  color: #F2F2F2;
+  text-decoration: none;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 5rem;
+  padding: 1rem;
+  background: #262626;
+  box-shadow: 0px 2px 20px 0px #262626;
+}
+header .header-wrapper, footer .header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+}
+header .header-wrapper > *, footer .header-wrapper > * {
+  align-self: center;
+  flex: 1;
+}
+header .header-wrapper nav, footer .header-wrapper nav {
+  flex-basis: 100%;
+  text-align: center;
+}
+header .header-wrapper nav a, footer .header-wrapper nav a {
+  margin-left: 1rem;
+}
+header .header-wrapper .logo, footer .header-wrapper .logo {
+  text-align: start;
+}
+header .header-wrapper .user-bar, footer .header-wrapper .user-bar {
+  text-align: end;
+}
+
+main {
+  margin-top: 7rem;
+  height: 100%;
+  padding: 0 1.25rem;
+}
+
+.add-form {
+  margin-top: 1.25rem;
+  width: 100%;
+}
+.add-form input, .add-form textarea {
+  display: block;
+  width: 50%;
+  padding: 1rem;
+  margin: 0.625rem auto 0 auto;
+  line-height: 2rem;
+  resize: none;
+  box-shadow: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 20px 0px #262626;
+}
+.add-form .controls {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0.625rem auto 0 auto;
+}
+
+.todo-item {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid #262626;
+}
+.todo-item:hover {
+  background: #262626;
+}
+.todo-item span {
+  display: block;
+  margin-top: 1.25rem;
+}
+.todo-item .todo-controls {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1.25rem;
+}
+.todo-item h3 {
+  text-align: left;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.btn {
+  width: 5rem;
+  height: 3rem;
+  box-shadow: none;
+  border: none;
+  transition: 200ms;
+}
+.btn.btn-delete {
+  background: #262626;
+  color: #F2F2F2;
+}
+.btn.btn-delete:hover {
+  background: #FF3636;
+}
+
+.btn:hover {
+  background: #B6E1F2;
+}
+
+footer {
+  position: relative;
+  margin-top: auto;
+}
+
+/*# sourceMappingURL=styles.css.map */

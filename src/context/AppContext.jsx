@@ -8,7 +8,7 @@ const AppContext = createContext(initialState);
 
 export const AppProvider = ({children}) => {
   const baseApiUrl = 'http://localhost:3001';
-  const userId = localStorage.getItem('userId');
+  const userId = JSON.parse(localStorage.getItem('userId'));
   const [{todos, users}, dispatch] = useReducer(rootReducer, initialState);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -23,17 +23,17 @@ export const AppProvider = ({children}) => {
   };
 
   const loadUsers = () => {
-    axios.get(`${baseApiUrl}/users`)
+   axios.get(`${baseApiUrl}/users/`)
       .then(response => dispatch({type: ACTION_TYPES.LOAD_USERS, payload: response.data}))
       .catch(error => console.log(error))
   }
 
 
-
-    const toggleComplete = (id) => {
+  const toggleComplete = (id) => {
       const searchedTodo = todos.find(todo => todo.id === id);
       const toggle = searchedTodo?.completed;
 
+      //Example of using fetch
       fetch(`${baseApiUrl}/todos/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({
@@ -56,6 +56,7 @@ export const AppProvider = ({children}) => {
 
   useEffect(() => {
     loadTodos();
+    loadUsers();
   }, [isLogged]);
 
 

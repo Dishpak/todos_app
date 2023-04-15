@@ -8,4 +8,5 @@ export const ACTION_TYPES = {
 
   LOAD_USERS: 'LOAD_USERS',
   ADD_USER: 'ADD_USER',
+  EDIT_USER: 'EDIT_USER',
 }

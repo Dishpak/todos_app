@@ -26,68 +26,75 @@
     },
     {
       "userId": "1",
-      "id": "bdc1a7fe-401c-45da-bd0d-07a6643ac462",
-      "title": "Dishpak 3",
-      "completed": false
-    },
-    {
-      "userId": "1",
-      "id": "c9bc155b-e770-4519-a4ac-6b2b86e694f7",
-      "title": "1234567",
-      "description": "321",
-      "completed": false
-    },
-    {
-      "userId": "1",
-      "id": "a9fc2007-785e-495c-9721-05b1e13c2d60",
-      "title": "Edited",
-      "description": "Another Description",
-      "completed": false
-    },
-    {
-      "userId": "1",
-      "id": "221541ef-8be5-47b6-a0f3-473857f1d732",
-      "title": "New Task",
-      "completed": false
-    },
-    {
-      "userId": "1",
-      "id": "d428d9fa-d9e9-4c17-b17a-05502225babc",
-      "title": "123",
-      "completed": false
-    },
-    {
-      "userId": "1",
       "id": "c5cd22b2-e5bc-40a2-a575-99c62de189e4",
       "title": "descrip",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur feugiat leo nec mi volutpat, id viverra quam placerat. Duis scelerisque id turpis at blandit. Fusce ornare dolor lectus, eu ullamcorper dui consectetur et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce consequat ex nec vulputate volutpat. Vivamus sit amet ante mattis, tincidunt tellus eu, venenatis ex. Quisque eu pretium ipsum, eu vestibulum libero. In sagittis ipsum suscipit sollicitudin volutpat. Suspendisse dignissim enim eu nibh auctor lacinia. Proin et diam libero. Curabitur varius nulla ut odio cursus aliquet. Sed malesuada nunc ut ornare lobortis. Duis.",
+      "completed": false,
+      "date": null
+    },
+    {
+      "userId": "1",
+      "id": "4012a835-8526-4d74-b804-a1acf39d855e",
+      "title": "Another one planned task",
+      "description": "One more try",
+      "date": "2023-04-19T21:00:00.000Z",
+      "completed": false
+    },
+    {
+      "userId": "1",
+      "id": "98d47b69-e2af-47ab-8e18-417401cae40e",
+      "title": "title new",
+      "description": "new des\n",
+      "date": "Tue Apr 11 2023",
+      "completed": true
+    },
+    {
+      "userId": "1",
+      "id": "10a27cc2-365c-477c-a53e-18f23a6c230c",
+      "title": "one more time",
+      "description": "we're gonna celebrate! DP",
+      "date": "Wed Mar 22 2023",
+      "completed": false
+    },
+    {
+      "userId": 1,
+      "id": "aa2ab06d-26b8-4bda-a433-055cd5020eb2",
+      "title": "Title",
+      "description": "Description",
+      "date": "Mon Apr 10 2023",
       "completed": false
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "dishpak",
-      "password": "dishpak"
+      "username": "dishpak",
+      "password": "dishpak",
+      "info": {
+        "name": "old",
+        "surname": "",
+        "location": "",
+        "additional": ""
+      }
     },
     {
       "id": 2,
-      "name": "vika",
+      "username": "vika",
       "password": "vika"
     },
     {
       "id": "01f584bd-8285-461a-b3c3-145671cecc62",
-      "name": "Aksana",
+      "username": "Aksana",
       "password": "123"
     },
     {
       "id": "ca5f3f43-8e1c-4273-9160-5e67fbae88f9",
-      "name": "aksana",
+      "username": "aksana",
       "password": "123"
     },
     {
       "id": "df1f93fa-27fd-4702-b441-3365b60c7690",
-      "name": "Eugene",
+      "username": "Eugene",
       "password": "Eugene"
     }
   ]

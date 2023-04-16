@@ -4,7 +4,8 @@
 
 
 body, #root {
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background: $color-background;
   color: $color-text;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,14 +16,23 @@ h1, h2, h3 {
   margin-top: $m-base;
 }
 
+h3 {
+  font-size: 28px;
+}
+
 a {
   color: $color-text;
   text-decoration: none;
 }
 
+input, textarea {
+  @include inputs;
+}
+
 .flex-container {
   @include flexContainer(column);
   min-height: 100vh;
+  align-items: stretch;
 }
 
 header {
@@ -30,40 +40,64 @@ header {
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  height: 5rem;
+  height: 7rem;
   padding: 1rem;
   background: $color-accent;
-  box-shadow: 0px 2px 20px 0px $color-accent;
+  box-shadow: $shadow-base;
+
+  @include tablet {
+    height: 5rem;
+  }
 
   .header-wrapper {
     @include flexContainer(row);
     width: 100%;
 
     & > * {
-      align-self: center;
       flex: 1;
     }
 
     nav {
       flex-basis: 100%;
       text-align: center;
+      margin-top: $m-base/2;
       & a {
         margin-left: $ui-step * 4;
+      }
+      @include tablet {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        order: -1;
+        flex: 1 1;
+        text-align: start;
+        margin-top: 0;
       }
     }
 
     .logo {
       text-align: start;
+
+      @include tablet {
+        text-align: center;
+      }
     }
 
     .user-bar {
-      text-align: end;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      & img {
+        cursor: pointer;
+      }
     }
   }
 }
 
 main {
-  margin-top: 7rem;
+  max-width: 800px;
+  margin: 7rem auto;
   height: 100%;
   padding: 0 $m-base;
 }
@@ -72,22 +106,11 @@ main {
   margin-top: $m-base;
   width: 100%;
 
-  input, textarea {
-    display: block;
-    width: 50%;
-    padding: $p-base;
-    margin: $m-base / 2 auto 0 auto;
-    line-height: 2rem;
-    resize: none;
-    box-shadow: none;
-    border-radius: 5px;
-    box-shadow: 0px 0 20px 0px $color-accent;
-  }
-
   .controls {
     @include flexContainer(row);
     justify-content: space-between;
     width: 50%;
+    max-width: 350px;
     margin: $m-base / 2 auto 0 auto;
 
   }
@@ -110,8 +133,11 @@ main {
 
   .todo-controls {
     @include flexContainer(row);
-    justify-content: space-around;
     margin-top: $m-base;
+
+    & button {
+      margin-left: $m-base;
+    }
   }
 
   h3 {
@@ -121,11 +147,55 @@ main {
   }
 }
 
+.in-edit {
+  input, textarea {
+    border: none;
+    box-shadow: none;
+    background: none;
+    color: $color-text;
+    border-radius: 0;
+    outline: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+
+.login-container {
+  width: 300px;
+  padding: $p-base;
+  background: $color-accent;
+  color: $color-text;
+  border-radius: 5px;
+  box-shadow: $shadow-base;
+  min-height: auto;
+
+  form {
+   margin: $m-base * 3 auto 0 auto;
+  }
+  label, button {
+    display: block;
+    margin-top: $m-base;
+  }
+  input {
+    margin-left: 0;
+    width: 200px;
+  }
+  button {
+    margin: $m-base * 3 auto;
+    border-radius: 5px;
+  }
+  p {
+    text-align: center;
+  }
+
+}
 
 .btn {
   width: $w-button;
   height: $h-hutton;
-  //border-radius: 5px;
   box-shadow: none;
   border: none;
   transition: 200ms;

@@ -7,7 +7,6 @@ $color-important: #A63737;
 $color-highlight: #FF3636;
 
 //MARGINS PADDINGS
-//$ui-step: 4px; //0.25rem
 $ui-step: 0.25rem; //4px
 $m-base: $ui-step * 5;
 $m-center-block: 0 auto;
@@ -17,9 +16,11 @@ $p-base: 1rem;
 $w-button: 5rem;
 $h-hutton: 3rem;
 
+$shadow-base: 0px 2px 20px 0px $color-accent;
+
 //DEVICE MIN-WIDTH BREAKPOINTS
 $screen-mobile: 320px;
-$screen-tablet: 481px;
+$screen-tablet: 620px;
 $screen-laptop: 769px;
 $screen-desktop: 1025px;
 $screen-extra: 1201px;
@@ -54,4 +55,16 @@ $screen-extra: 1201px;
   align-content: center;
   flex-wrap: wrap;
   flex-direction: $direction;
+}
+
+@mixin inputs {
+  display: block;
+  width: 50%;
+  max-width: 350px;
+  padding: $p-base;
+  margin: $m-base / 2 auto 0 auto;
+  line-height: 1rem;
+  resize: none;
+  border-radius: 5px;
+  box-shadow: $shadow-base;
 }

@@ -57,7 +57,8 @@ a {
 }
 
 body, #root {
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background: #617C8C;
   color: #F2F2F2;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -68,9 +69,25 @@ h1, h2, h3 {
   margin-top: 1.25rem;
 }
 
+h3 {
+  font-size: 28px;
+}
+
 a {
   color: #F2F2F2;
   text-decoration: none;
+}
+
+input, textarea {
+  display: block;
+  width: 50%;
+  max-width: 350px;
+  padding: 1rem;
+  margin: 0.625rem auto 0 auto;
+  line-height: 1rem;
+  resize: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 20px 0px #262626;
 }
 
 .flex-container {
@@ -80,6 +97,7 @@ a {
   flex-wrap: wrap;
   flex-direction: column;
   min-height: 100vh;
+  align-items: stretch;
 }
 
 header, footer {
@@ -87,10 +105,15 @@ header, footer {
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  height: 5rem;
+  height: 7rem;
   padding: 1rem;
   background: #262626;
   box-shadow: 0px 2px 20px 0px #262626;
+}
+@media (min-width: 620px) {
+  header, footer {
+    height: 5rem;
+  }
 }
 header .header-wrapper, footer .header-wrapper {
   display: flex;
@@ -101,25 +124,47 @@ header .header-wrapper, footer .header-wrapper {
   width: 100%;
 }
 header .header-wrapper > *, footer .header-wrapper > * {
-  align-self: center;
   flex: 1;
 }
 header .header-wrapper nav, footer .header-wrapper nav {
   flex-basis: 100%;
   text-align: center;
+  margin-top: 0.625rem;
 }
 header .header-wrapper nav a, footer .header-wrapper nav a {
   margin-left: 1rem;
 }
+@media (min-width: 620px) {
+  header .header-wrapper nav, footer .header-wrapper nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    order: -1;
+    flex: 1 1;
+    text-align: start;
+    margin-top: 0;
+  }
+}
 header .header-wrapper .logo, footer .header-wrapper .logo {
   text-align: start;
 }
+@media (min-width: 620px) {
+  header .header-wrapper .logo, footer .header-wrapper .logo {
+    text-align: center;
+  }
+}
 header .header-wrapper .user-bar, footer .header-wrapper .user-bar {
-  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+header .header-wrapper .user-bar img, footer .header-wrapper .user-bar img {
+  cursor: pointer;
 }
 
 main {
-  margin-top: 7rem;
+  max-width: 800px;
+  margin: 7rem auto;
   height: 100%;
   padding: 0 1.25rem;
 }
@@ -127,17 +172,6 @@ main {
 .add-form {
   margin-top: 1.25rem;
   width: 100%;
-}
-.add-form input, .add-form textarea {
-  display: block;
-  width: 50%;
-  padding: 1rem;
-  margin: 0.625rem auto 0 auto;
-  line-height: 2rem;
-  resize: none;
-  box-shadow: none;
-  border-radius: 5px;
-  box-shadow: 0px 0 20px 0px #262626;
 }
 .add-form .controls {
   display: flex;
@@ -147,6 +181,7 @@ main {
   flex-direction: row;
   justify-content: space-between;
   width: 50%;
+  max-width: 350px;
   margin: 0.625rem auto 0 auto;
 }
 
@@ -168,13 +203,55 @@ main {
   align-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
   margin-top: 1.25rem;
+}
+.todo-item .todo-controls button {
+  margin-left: 1.25rem;
 }
 .todo-item h3 {
   text-align: left;
   font-size: 1.5rem;
   margin-top: 0;
+}
+
+.in-edit input, .in-edit textarea {
+  border: none;
+  box-shadow: none;
+  background: none;
+  color: #F2F2F2;
+  border-radius: 0;
+  outline: none;
+}
+.in-edit input::-webkit-scrollbar, .in-edit textarea::-webkit-scrollbar {
+  width: 0;
+}
+
+.login-container {
+  width: 300px;
+  padding: 1rem;
+  background: #262626;
+  color: #F2F2F2;
+  border-radius: 5px;
+  box-shadow: 0px 2px 20px 0px #262626;
+  min-height: auto;
+}
+.login-container form {
+  margin: 3.75rem auto 0 auto;
+}
+.login-container label, .login-container button {
+  display: block;
+  margin-top: 1.25rem;
+}
+.login-container input {
+  margin-left: 0;
+  width: 200px;
+}
+.login-container button {
+  margin: 3.75rem auto;
+  border-radius: 5px;
+}
+.login-container p {
+  text-align: center;
 }
 
 .btn {

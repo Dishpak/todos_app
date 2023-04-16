@@ -1,69 +1,69 @@
 import React, {useContext, useState} from 'react';
 import AppContext from "../../context/AppContext";
 import {ACTION_TYPES} from "../../helpers/globalVariables";
-import {v4 as uuidv4} from "uuid";
 import axios from "axios";
 import Calendar from "react-calendar";
+import useToggle from "../../hooks/useToggle";
+import useFormInputs from "../../hooks/useInputs";
 
 const AddTodo = () => {
-  const {title, setTitle, description, setDescription, baseApiUrl, userId, uid, dispatch} = useContext(AppContext);
+  const {baseApiUrl, userId, uid, dispatch} = useContext(AppContext);
+  const [isCalendarVisible, toggleCalendar] = useToggle(false);
+  const [formInputs, handleInputChange, handleInputsReset] = useFormInputs({});
+  const [calendarDate, setCalendarDate] = useState(new Date().toDateString());
   const [errorMessage, setErrorMessage] = useState('');
-  const [date, setDate] = useState(null);
-  const [isCalendarShown, setIsCalendarShown] = useState(false);
 
   const handleAddTodo = (e) => {
     e.preventDefault()
 
-    if (title) {
+    if (formInputs.title) {
       axios.post(`${baseApiUrl}/todos?userId=${userId}`,
         {
           userId: userId,
           id: uid,
-          title: title,
-          description: description,
-          date: date,
+          title: formInputs.title,
+          description: formInputs.description,
+          date: calendarDate,
           completed: false,
+          created: new Date().toDateString(),
         })
         .then(response => dispatch({type: ACTION_TYPES.ADD_TODO, payload: response.data}));
     } else {
       setErrorMessage('Field cannot be empty!')
     }
-    uuidv4();
-    setTitle('');
-    setDescription('');
-    setDate(new Date());
-    setIsCalendarShown(false);
-  }
 
+    handleInputsReset();
+    isCalendarVisible && toggleCalendar();
+  }
 
   return (
     <>
-      <form className='add-form' onSubmit={handleAddTodo}>
+      <form className='add-form' onSubmit={handleAddTodo} onChange={() => setErrorMessage('')}>
         <input
           type="text"
           placeholder={'Give a title'}
           name='title'
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={formInputs.title || ''}
+          onChange={handleInputChange}
+          autoComplete={'off'}
         />
         <textarea
           name="description"
           placeholder={'Give a description (optional)'}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={formInputs.description || ''}
+          onChange={handleInputChange}
           autoComplete={'off'}
         />
 
         {errorMessage && <p>{errorMessage}</p>}
-        {isCalendarShown && <Calendar onChange={(e) => setDate(e.toDateString())} value={date}/>}
+        {isCalendarVisible && <Calendar name="date" onChange={(e) => setCalendarDate(e.toDateString())} value={calendarDate}/>}
 
         <div className={'controls'}>
           <button
             className={'btn '}
             type='button'
-            className={'btn '}
-            onClick={() => setIsCalendarShown(!isCalendarShown)}>
-            {isCalendarShown ? 'Hide Calendar' : 'Plan a date'}
+            onClick={() => toggleCalendar()}>
+            {isCalendarVisible ? 'Hide Calendar' : 'Plan a date'}
           </button>
           <button type="submit" className={'btn '}>Add</button>
         </div>

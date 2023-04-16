@@ -15,7 +15,7 @@ export const todosReducer = (state = initialState.todos, action) => {
     }
 
     case ACTION_TYPES.ADD_TODO: {
-      return [...state, action.payload]
+      return [action.payload, ...state]
     }
 
     case ACTION_TYPES.TOGGLE_COMPLETE_TODO: {

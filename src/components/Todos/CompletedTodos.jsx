@@ -5,7 +5,7 @@ const CompletedTodos = () => {
   const {toggleComplete, handleDelete, todos} = useContext(AppContext)
 
   return (
-    <div>
+    <main className={'flex-child'}>
       <h1>Completed Tasks</h1>
       <div className={'todo-list'}>
         {todos.filter(todo => todo.completed).map((todo) => {
@@ -22,7 +22,7 @@ const CompletedTodos = () => {
           </div>
         })}
       </div>
-    </div>
+    </main>
   );
 };
 

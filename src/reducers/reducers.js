@@ -34,20 +34,20 @@ export const todosReducer = (state = initialState.todos, action) => {
       return state.map(todo =>
         todo.id === action.payload
           ? {...todo, editMode: !todo.editMode}
-          : todo
+          : {...todo, editMode: false}
       );
     }
 
     case ACTION_TYPES.EDIT_TODO: {
       return state.map(todo => {
         if(todo.id === action.payload.id){
-          if(action.payload.newTitle.length > 0) {
+          if(action.payload.title.length > 0) {
             return {
               ...todo,
               editMode: false,
-              title: action.payload.newTitle,
-              description: action.payload.newDescription,
-              date: action.payload.newDate
+              title: action.payload.title,
+              description: action.payload.description,
+              date: action.payload.date,
             }
           } else {
             return {...todo, editMode: false}

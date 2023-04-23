@@ -8,7 +8,7 @@ import useFormInputs from "../../hooks/useFormInputs";
 import useErrorMessage from "../../hooks/useErrorMessage";
 
 const AddTodo = () => {
-  const {baseApiUrl, userId, uid, dispatch} = useContext(AppContext);
+  const {baseApiUrl, userId, username, uid, dispatch} = useContext(AppContext);
   const [isCalendarVisible, toggleCalendar] = useToggle(false);
   const [formInputs, handleInputChange, handleInputsReset] = useFormInputs({});
   const [calendarDate, setCalendarDate] = useState(null);
@@ -21,6 +21,7 @@ const AddTodo = () => {
       axios.post(`${baseApiUrl}/todos?userId=${userId}`,
         {
           userId: userId,
+          username: username,
           id: uid,
           title: formInputs.title,
           description: formInputs.description,
@@ -28,7 +29,8 @@ const AddTodo = () => {
           completed: false,
           created: new Date().toDateString(),
         })
-        .then(response => dispatch({type: ACTION_TYPES.ADD_TODO, payload: response.data}));
+        .then(response => dispatch({type: ACTION_TYPES.ADD_TODO, payload: response.data}))
+        .catch(error => console.log(error));
     } else {
       setErrorMessage('Field cannot be empty!')
     }
@@ -65,7 +67,7 @@ const AddTodo = () => {
             className={'btn '}
             type='button'
             onClick={toggleCalendar}>
-            {isCalendarVisible ? 'Hide Calendar' : 'Plan a date'}
+            {isCalendarVisible ? 'Hide Calendar' : 'Pick a date'}
           </button>
           <button type="submit" className={'btn '}>Add</button>
         </div>

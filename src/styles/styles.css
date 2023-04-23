@@ -97,7 +97,10 @@ input, textarea {
   flex-wrap: wrap;
   flex-direction: column;
   min-height: 100vh;
-  align-items: stretch;
+}
+
+.app {
+  justify-content: flex-start;
 }
 
 header, footer {
@@ -165,7 +168,6 @@ header .header-wrapper .user-bar img, footer .header-wrapper .user-bar img {
 main {
   max-width: 800px;
   margin: 7rem auto;
-  height: 100%;
   padding: 0 1.25rem;
 }
 
@@ -226,6 +228,11 @@ main {
   width: 0;
 }
 
+.login-wrapper {
+  min-height: auto;
+  flex: 1 0 auto;
+}
+
 .login-container {
   width: 300px;
   padding: 1rem;
@@ -238,17 +245,21 @@ main {
 .login-container form {
   margin: 3.75rem auto 0 auto;
 }
-.login-container label, .login-container button {
+.login-container label {
   display: block;
   margin-top: 1.25rem;
 }
 .login-container input {
   margin-left: 0;
-  width: 200px;
+  width: calc(304px - 2.5rem);
 }
-.login-container button {
-  margin: 3.75rem auto;
+.login-container .controls {
+  margin: 3.75rem auto 1.25rem;
+  text-align: center;
+}
+.login-container .controls button {
   border-radius: 5px;
+  margin: 0 1.25rem;
 }
 .login-container p {
   text-align: center;
@@ -275,7 +286,13 @@ main {
 
 footer {
   position: relative;
+  top: auto;
+  bottom: 0;
   margin-top: auto;
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

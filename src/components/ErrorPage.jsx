@@ -2,9 +2,9 @@ import React from 'react';
 
 const ErrorPage = () => {
   return (
-    <div>
+    <main>
       <h2>There is no such page</h2>
-    </div>
+    </main>
   );
 };
 

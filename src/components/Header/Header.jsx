@@ -5,10 +5,7 @@ import Userbar from "./Userbar";
 import Navbar from "./Navbar";
 
 const Header = () => {
-  const {userId} = useContext(AppContext);
-
-
-
+  const {isLogged} = useContext(AppContext);
 
   return (
     <header>
@@ -16,8 +13,12 @@ const Header = () => {
         <div className={'logo'}>
           <a href="/"><img src={logo} alt="logo" style={{height: 50}}/></a>
         </div>
-        {userId && <Userbar />}
-        {userId && <Navbar />}
+        {isLogged &&
+          <>
+          <Userbar/>
+          <Navbar/>
+        </>
+        }
       </div>
     </header>
   );

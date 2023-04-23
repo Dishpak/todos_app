@@ -16,10 +16,14 @@ const TodoEdit = ({todo}) => {
 
   const handleEditTodo = (e, id) => {
     e.preventDefault();
-    formInputs.title && axios.patch(`${baseApiUrl}/todos/${id}`, {
-      title: formInputs.title, description: formInputs.description, date: calendarDate ? calendarDate : todo.date,
+    formInputs.title && axios.patch(`${baseApiUrl}/todos/${id}`,
+      {
+        title: formInputs.title,
+        description: formInputs.description,
+        date: calendarDate ? calendarDate : todo.date,
     })
-      .then(response => dispatch({type: ACTION_TYPES.EDIT_TODO, payload: {id, ...response.data}}));
+      .then(response => dispatch({type: ACTION_TYPES.EDIT_TODO, payload: {id, ...response.data}}))
+      .catch(error => console.log(error))
 
 
     handleInputsReset();

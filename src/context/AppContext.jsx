@@ -8,13 +8,11 @@ const AppContext = createContext(initialState);
 
 export const AppProvider = ({children}) => {
   const baseApiUrl = 'http://localhost:3001';
-  const userId = JSON.parse(localStorage.getItem('userId'));
   const [{todos, users}, dispatch] = useReducer(rootReducer, initialState);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [isLogged, setIsLogged] = useState(localStorage.getItem('userName'))
+  const userId = localStorage.getItem('userId');
+  const username = JSON.parse(localStorage.getItem('username'))
+  const [isLogged, setIsLogged] = useState(JSON.parse(localStorage.getItem('userId')));
   let uid = uuidv4()
-
 
   const loadTodos = () => {
     axios.get(`${baseApiUrl}/todos/?userId=${userId}`)
@@ -26,8 +24,7 @@ export const AppProvider = ({children}) => {
    axios.get(`${baseApiUrl}/users/`)
       .then(response => dispatch({type: ACTION_TYPES.LOAD_USERS, payload: response.data}))
       .catch(error => console.log(error))
-  }
-
+  };
 
   const toggleComplete = (id) => {
       const searchedTodo = todos.find(todo => todo.id === id);
@@ -69,15 +66,12 @@ export const AppProvider = ({children}) => {
         toggleComplete,
         todos,
         users,
-        title,
-        setTitle,
-        description,
-        setDescription,
         uid,
         dispatch,
         isLogged,
         setIsLogged,
-        loadUsers
+        username,
+        loadUsers,
       }
     }>
       {children}

@@ -3,73 +3,73 @@ import { useNavigate } from 'react-router-dom';
 import AppContext from "../context/AppContext";
 import axios from "axios";
 import {ACTION_TYPES} from "../helpers/globalVariables";
+import useFormInputs from "../hooks/useFormInputs";
 
 const Register = () => {
-  const {users, baseApiUrl, uid, dispatch} = useContext(AppContext)
+  const {users, baseApiUrl, uid, dispatch, setIsLogged} = useContext(AppContext)
+  const [formInputs, handleInputChange] = useFormInputs({})
   const navigate = useNavigate()
 
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(password !== confirmPassword) {
+    if(formInputs.password !== formInputs.confirmPassword) {
       setErrorMessage('Your passwords don\'t match')
-    } else if(users.find(user => user.name === userName)) {
+    } else if(users.find(user => user.username === formInputs.username)) {
       setErrorMessage('Username is taken. Choose another one')
     } else {
       axios.post(`${baseApiUrl}/users`, {
         id: uid,
-        name: userName,
-        password: password,
+        username: formInputs.username,
+        password: formInputs.password,
       })
         .then(response => dispatch({type: ACTION_TYPES.ADD_USER, payload: response.data}))
-      localStorage.setItem('userName', JSON.stringify(userName).toLowerCase());
-      localStorage.setItem('userId', uid);
-      navigate('/todos')
+      localStorage.setItem('username', JSON.stringify(formInputs.username));
+      localStorage.setItem('userId', JSON.stringify(uid));
+      navigate('/todos');
+      setIsLogged(true);
     }
   }
 
-  // console.log(users);
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <>
+      <form className={'register-form'} onSubmit={handleSubmit} onChange={() => setErrorMessage('')}>
+        <label htmlFor="username">Create a username</label>
         <input
-          type="name"
+          type="text"
+          name='username'
           placeholder={'Enter your name'}
-          value={userName}
-          onChange={(e) => {
-            setUserName(e.target.value)
-            setErrorMessage('')
-          }}
+          value={formInputs.username || ''}
+          onChange={handleInputChange}
+          required={true}
         />
+        <label htmlFor="username">Create a password</label>
         <input
           type="password"
-          placeholder={'Create a password'}
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value)
-            setErrorMessage('')
-          }}
+          name='password'
+          placeholder='********'
+          value={formInputs.password || ''}
+          onChange={handleInputChange}
+          required={true}
         />
+        <label htmlFor="username">Confirm password</label>
         <input
           type="password"
-          placeholder={'Confirm password'}
-          value={confirmPassword}
-          onChange={(e) => {
-            setConfirmPassword(e.target.value)
-            setErrorMessage('')
-          }}
+          name='confirmPassword'
+          placeholder='********'
+          value={formInputs.confirmPassword || ''}
+          onChange={handleInputChange}
+          required={true}
         />
-        <button type={'submit'}>Register</button>
+        <div className={'controls'}>
+          <button type={'submit'} className={'btn '}>Register</button>
+        </div>
       </form>
       <p>{errorMessage && errorMessage}</p>
-    </div>
+    </>
   );
 };
 

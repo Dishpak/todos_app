@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 // import './index.css';
 import './styles/styles.scss';
 import App from './App';
-import {HashRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {AppProvider} from "./context/AppContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AppProvider>
-      <HashRouter>
+      <BrowserRouter basename='/todos_app'>
         <App />
-      </HashRouter>
+      </BrowserRouter>
   </AppProvider>
 );

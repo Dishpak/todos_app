@@ -9,7 +9,7 @@ import {AppProvider} from "./context/AppContext";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AppProvider>
-      <BrowserRouter basename='/todos_app'>
+      <BrowserRouter>
         <App />
       </BrowserRouter>
   </AppProvider>

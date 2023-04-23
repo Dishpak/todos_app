@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/todos_app/static/css/main.6d03d206.css",
+    "main.js": "/todos_app/static/js/main.1214f83f.js",
+    "static/media/logo-black-crop.png": "/todos_app/static/media/logo-black-crop.dd817d9985da5fd512f9.png",
+    "index.html": "/todos_app/index.html",
+    "main.6d03d206.css.map": "/todos_app/static/css/main.6d03d206.css.map",
+    "main.1214f83f.js.map": "/todos_app/static/js/main.1214f83f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d03d206.css",
+    "static/js/main.1214f83f.js"
+  ]
+}

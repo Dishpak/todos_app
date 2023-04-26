@@ -163,6 +163,8 @@ header .header-wrapper .user-bar, footer .header-wrapper .user-bar {
 }
 header .header-wrapper .user-bar img, footer .header-wrapper .user-bar img {
   cursor: pointer;
+  width: auto;
+  height: 1.5rem;
 }
 
 main {

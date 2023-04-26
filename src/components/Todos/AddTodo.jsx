@@ -1,14 +1,13 @@
 import React, {useContext, useState} from 'react';
+import axios from "axios";
+
 import AppContext from "../../context/AppContext";
 import {ACTION_TYPES} from "../../helpers/globalVariables";
-import axios from "axios";
+import {useToggle, useFormInputs, useErrorMessage} from "../../hooks";
 import Calendar from "react-calendar";
-import useToggle from "../../hooks/useToggle";
-import useFormInputs from "../../hooks/useFormInputs";
-import useErrorMessage from "../../hooks/useErrorMessage";
 
 const AddTodo = () => {
-  const {baseApiUrl, userId, username, uid, dispatch} = useContext(AppContext);
+  const {apiUrl, userId, username, uid, dispatch} = useContext(AppContext);
   const [isCalendarVisible, toggleCalendar] = useToggle(false);
   const [formInputs, handleInputChange, handleInputsReset] = useFormInputs({});
   const [calendarDate, setCalendarDate] = useState(null);
@@ -18,7 +17,7 @@ const AddTodo = () => {
     e.preventDefault()
 
     if (formInputs.title) {
-      axios.post(`${baseApiUrl}/todos?userId=${userId}`,
+      axios.post(`${apiUrl}/todos?userId=${userId}`,
         {
           userId: userId,
           username: username,

@@ -1,12 +1,13 @@
 import React, {useContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import AppContext from "../context/AppContext";
 import axios from "axios";
+
+import AppContext from "../context/AppContext";
 import {ACTION_TYPES} from "../helpers/globalVariables";
-import useFormInputs from "../hooks/useFormInputs";
+import {useFormInputs} from "../hooks";
 
 const Register = () => {
-  const {users, baseApiUrl, uid, dispatch, setIsLogged} = useContext(AppContext)
+  const {users, apiUrl, uid, dispatch, setIsLogged} = useContext(AppContext)
   const [formInputs, handleInputChange] = useFormInputs({})
   const navigate = useNavigate()
 
@@ -21,7 +22,7 @@ const Register = () => {
     } else if(users.find(user => user.username === formInputs.username)) {
       setErrorMessage('Username is taken. Choose another one')
     } else {
-      axios.post(`${baseApiUrl}/users`, {
+      axios.post(`${apiUrl}/users`, {
         id: uid,
         username: formInputs.username,
         password: formInputs.password,

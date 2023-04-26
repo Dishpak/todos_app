@@ -1,6 +1,7 @@
 import {useState} from 'react';
+
+import {useAuth} from "../hooks/";
 import Register from "./Register";
-import useAuth from "../hooks/useAuth";
 
 const LoginPage = () => {
   const {handleSubmit, formInputs, handleInputChange, failedLog} = useAuth();

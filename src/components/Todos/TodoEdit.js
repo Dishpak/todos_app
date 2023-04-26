@@ -1,13 +1,13 @@
 import {useContext, useState} from 'react';
-import useFormInputs from "../../hooks/useFormInputs";
 import axios from "axios";
-import {ACTION_TYPES} from "../../helpers/globalVariables";
+
 import AppContext from "../../context/AppContext";
-import useToggle from "../../hooks/useToggle";
+import {ACTION_TYPES} from "../../helpers/globalVariables";
+import {useFormInputs, useToggle} from "../../hooks";
 import Calendar from "react-calendar";
 
 const TodoEdit = ({todo}) => {
-  const {dispatch, baseApiUrl} = useContext(AppContext);
+  const {dispatch, apiUrl} = useContext(AppContext);
   const [formInputs, handleInputChange, handleInputsReset] = useFormInputs({
     title: todo.title, description: todo.description,
   });
@@ -16,7 +16,7 @@ const TodoEdit = ({todo}) => {
 
   const handleEditTodo = (e, id) => {
     e.preventDefault();
-    formInputs.title && axios.patch(`${baseApiUrl}/todos/${id}`,
+    formInputs.title && axios.patch(`${apiUrl}/todos/${id}`,
       {
         title: formInputs.title,
         description: formInputs.description,

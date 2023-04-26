@@ -1,9 +1,6 @@
-import React, {useContext} from 'react';
-import UserContext from "../context/UserContext";
+import React from 'react';
 
 const UserDetails = () => {
-
-  // const {avatar} = useContext(UserContext)
 
   return (
     <div className='flex-container row'>

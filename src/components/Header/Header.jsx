@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
-import logo from '../../assets/logo/logo-black-crop.png';
+
 import AppContext from "../../context/AppContext";
+import logo from '../../assets/logo/logo-black-crop.png';
 import Userbar from "./Userbar";
 import Navbar from "./Navbar";
 
@@ -15,9 +16,9 @@ const Header = () => {
         </div>
         {isLogged &&
           <>
-          <Userbar/>
-          <Navbar/>
-        </>
+            <Userbar/>
+            <Navbar/>
+          </>
         }
       </div>
     </header>

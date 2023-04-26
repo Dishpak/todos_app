@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
 import {Routes, Route} from "react-router-dom";
+
+import AppContext from "../context/AppContext";
 import Todos from "../components/Todos/Todos";
 import ErrorPage from "../components/ErrorPage";
 import LoginPage from "../components/LoginPage";
 import CompletedTodos from "../components/Todos/CompletedTodos";
-import AppContext from "../context/AppContext";
 import Profile from "../components/Profile";
 
 const AppRouter = () => {

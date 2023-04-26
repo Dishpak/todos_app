@@ -73,26 +73,6 @@
       "date": "Thu Apr 20 2023",
       "completed": false,
       "created": "Mon Apr 17 2023"
-    },
-    {
-      "userId": "\"25ec7685-60f6-4d95-9759-960f383fdf98\"",
-      "username": "123",
-      "id": "19219a3f-d290-425a-a69f-b39faaf81621",
-      "title": "my task",
-      "description": "asdasd",
-      "date": null,
-      "completed": false,
-      "created": "Mon Apr 17 2023"
-    },
-    {
-      "userId": "\"9ede9636-2fab-4b08-b921-e992bf138055\"",
-      "username": "username",
-      "id": "8b2758d7-c522-49e7-8a28-63efa34450dd",
-      "title": "title",
-      "description": "username",
-      "date": null,
-      "completed": false,
-      "created": "Sun Apr 23 2023"
     }
   ],
   "users": [
